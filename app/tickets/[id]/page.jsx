@@ -1,7 +1,11 @@
+import { notFound } from "next/navigation";
+
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const res = await fetch('http://localhost:4000/tickets');
 
-  const tickets = await res.json;
+  const tickets = await res.json();
 
   return tickets.map((ticket) => ({
     id: ticket.id
@@ -14,6 +18,10 @@ async function getTicket(id) {
       revalidate: 60
     }
   });
+
+  if(!res.ok) {
+    notFound();
+  }
 
   return res.json();
 }
