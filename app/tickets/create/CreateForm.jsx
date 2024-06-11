@@ -11,7 +11,7 @@ const CreateForm = () => {
   const [ priority, setPriority ] = useState('low');
   const [ isLoading, setIsLoading ] = useState(false);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -19,14 +19,15 @@ const CreateForm = () => {
       title, body, priority, user_email: 'sohail@netninja.dev',
     }
 
-    const res = fetch('http://localhost:4000/tickets', {
+    const res = await fetch('http://localhost:4000/tickets', {
       method: "POST",
       headers: {"content-type": "application/json"},
       body: JSON.stringify(ticket),
     })
 
     if (res.status === 201) {
-      router.push('/ticket')
+      router.refresh();
+      router.push('/tickets');
     }
   }
 
@@ -42,7 +43,7 @@ const CreateForm = () => {
         />
       </label>
       <label>
-        <span>Title:</span>
+        <span>Body:</span>
         <textarea
           required
           onChange={(e) => setBody(e.target.value)}
@@ -64,8 +65,8 @@ const CreateForm = () => {
         className="btn-primary"
         disabled={isLoading}
       >
-        { isLoading && <span>Adding...</span> }
-        { !isLoading && <span>Add Ticket</span> }
+        {isLoading && <span>Adding...</span>}
+        {!isLoading && <span>Add Ticket</span>}
       </button>
     </form>
   )
