@@ -1,6 +1,11 @@
+import CreateForm from "./CreateForm";
+
 const CreateTicket = () => {
   return (
-    <div>CreateTicket</div>
+    <main>
+      <h2 className="text-primary text-center">Add a New Ticket</h2>
+      <CreateForm />
+    </main>
   )
 }
 
