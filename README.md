@@ -24,7 +24,7 @@
 
 # 📖 Dojo Helpdesk <a name="about-project"></a>
 
-Dojo Helpdesk is a Next.js website. One of my first projects that I have made using Next.js.
+Dojo Helpdesk is a Next.js website. Dojo Helpdesk displays a list of tickets on the dashboard page. Users can see the ticket details, and add a new ticket.
 
 ## 🛠 Built With <a name="built-with"></a>
 
